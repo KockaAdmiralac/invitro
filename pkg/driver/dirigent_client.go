@@ -2,14 +2,15 @@ package driver
 
 import (
 	"encoding/json"
-	log "github.com/sirupsen/logrus"
-	"github.com/vhive-serverless/loader/pkg/common"
-	mc "github.com/vhive-serverless/loader/pkg/metric"
 	"io"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
+
+	log "github.com/sirupsen/logrus"
+	"github.com/vhive-serverless/loader/pkg/common"
+	mc "github.com/vhive-serverless/loader/pkg/metric"
 )
 
 type FunctionResponse struct {
@@ -46,7 +47,7 @@ func InvokeDirigent(function *common.Function, runtimeSpec *common.RuntimeSpecif
 
 	req.Host = function.Name
 
-	req.Header.Set("workload", function.DirigentMetadata.Image)
+	req.Header.Set("workload", function.DirigentMetadata.WorkloadType)
 	req.Header.Set("function", function.Name)
 	req.Header.Set("requested_cpu", strconv.Itoa(runtimeSpec.Runtime))
 	req.Header.Set("requested_memory", strconv.Itoa(runtimeSpec.Memory))

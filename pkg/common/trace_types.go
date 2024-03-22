@@ -73,6 +73,7 @@ type FunctionMemoryStats struct {
 type DirigentMetadata struct {
 	HashFunction        string `csv:"HashFunction"`
 	Image               string `csv:"Image"`
+	WorkloadType        string `csv:"WorkloadType"`
 	Port                int    `csv:"Port"`
 	Protocol            string `csv:"Protocol"`
 	ScalingUpperBound   int    `csv:"ScalingUpperBound"`
